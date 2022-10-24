@@ -16,27 +16,34 @@ import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Amenity": Amenity, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
+classes = {
+    "Amenity": Amenity,
+    "City": City,
+    "Place": Place,
+    "Review": Review,
+    "State": State,
+    "User": User,
+}
 
 
 class DBStorage:
     """interaacts with the MySQL database"""
+
     __engine = None
     __session = None
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
-        HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
-        HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
-        HBNB_ENV = getenv('HBNB_ENV')
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
-                                      format(HBNB_MYSQL_USER,
-                                             HBNB_MYSQL_PWD,
-                                             HBNB_MYSQL_HOST,
-                                             HBNB_MYSQL_DB))
+        HBNB_MYSQL_USER = getenv("HBNB_MYSQL_USER")
+        HBNB_MYSQL_PWD = getenv("HBNB_MYSQL_PWD")
+        HBNB_MYSQL_HOST = getenv("HBNB_MYSQL_HOST")
+        HBNB_MYSQL_DB = getenv("HBNB_MYSQL_DB")
+        HBNB_ENV = getenv("HBNB_ENV")
+        self.__engine = create_engine(
+            "mysql+mysqldb://{}:{}@{}/{}".format(
+                HBNB_MYSQL_USER, HBNB_MYSQL_PWD, HBNB_MYSQL_HOST, HBNB_MYSQL_DB
+            )
+        )
         if HBNB_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
@@ -47,9 +54,9 @@ class DBStorage:
             if cls is None or cls is classes[clss] or cls is clss:
                 objs = self.__session.query(classes[clss]).all()
                 for obj in objs:
-                    key = obj.__class__.__name__ + '.' + obj.id
+                    key = obj.__class__.__name__ + "." + obj.id
                     new_dict[key] = obj
-        return (new_dict)
+        return new_dict
 
     def new(self, obj):
         """add the object to the current database session"""
@@ -70,6 +77,37 @@ class DBStorage:
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session
+
+    def get(self, cls, id):
+        """
+        Returns the object based on the class and its ID, or None if not found
+        cls: class
+        id: string representing the object ID
+        """
+
+        if cls not in classes.values():
+            return None
+        else:
+            all_storage = models.storage.all(cls)
+            for storage in all_storage.values():
+                if storage.id == id:
+                    return storage
+
+    def count(self, cls=None):
+        """
+        Returns the number of objects in storage matching the given class.
+        If no class is passed, returns the count of all objects in storage.
+        cls: class
+        """
+
+        if not cls:
+            count = 0
+            for value in classes.values():
+                n = len(models.storage.all(value).values())
+                count += n
+        else:
+            count = len(models.storage.all(cls).values())
+        return count
 
     def close(self):
         """call remove() method on the private session attribute"""
