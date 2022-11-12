@@ -50,10 +50,10 @@ def create_state():
     """
 
     if not request.get_json():
-        abort(400, message="Not a json")
+        abort(400, description="Not a json")
     state_info = request.get_json()
     if state_info.get("name", None) is None:
-        abort(400, message="Missing name")
+        abort(400, description="Missing name")
 
     state = State(**state_info)
     state.save()
@@ -70,7 +70,7 @@ def update_state(state_id):
         abort(404)
 
     if not request.get_json():
-        abort(404, message="Not a JSON")
+        abort(404, description="Not a JSON")
 
     for k, v in request.get_json().items():
         if k not in ["id", "created_at", "updated_at"]:
