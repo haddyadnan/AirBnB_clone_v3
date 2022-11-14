@@ -11,15 +11,17 @@ from models.place import Place
 from models.user import User
 
 
-@app_views.route("/cities/<c_id>/places", methods=["GET"], strict_slashes=False)
+@app_views.route("/cities/<cid>/places", methods=["GET"], strict_slashes=False)
 def all_places(cid):
     """
     Retrieves the list of all Place objects:
     """
     cities = storage.get(City, cid)
-    if not cities:
+
+    if cities is None:
         abort(404)
-    places_list = [place.to_dict() for place in cities.places]
+
+    places_list = [place.to_dict() for place in storage.all(Place).values()]
     return jsonify(places_list)
 
 
@@ -31,6 +33,7 @@ def one_place(place_id):
     place = storage.get(Place, place_id)
     if place is None:
         abort(404)
+
     return jsonify(place.to_dict())
 
 
@@ -42,9 +45,10 @@ def delete_place(place_id):
     place = storage.get(Place, place_id)
     if place is None:
         abort(404)
+
     storage.delete(place)
     storage.save()
-    return jsonify({}), 200
+    return make_response(jsonify({}), 200)
 
 
 @app_views.route("/cities/<id>/places", methods=["POST"], strict_slashes=False)
@@ -56,9 +60,11 @@ def create_place(id):
 
     if not request.get_json():
         abort(400, description="Not a json")
+
     data = request.get_json()
     if data.get("user_id", None) is None:
         abort(400, description="Missing user_id")
+
     if data.get("name", None) is None:
         abort(400, description="Missing user_id")
 
