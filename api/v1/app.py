@@ -10,8 +10,8 @@ from api.v1.views import app_views
 from models import storage
 
 app = Flask(__name__)
+CORS(app, resources={r"/api/v1/*": {"origins": "0.0.0.0"}})
 app.register_blueprint(app_views)
-CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
 @app.teardown_appcontext
