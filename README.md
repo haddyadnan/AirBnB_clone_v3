@@ -130,75 +130,76 @@ TestBaseModel class:
 [/index.py](/api/v1/views/index.py) - Endpoint that retrieves the number of each objects by type
 
 [/states.py](/api/v1/views/states.py) - View for State objects that handles all default RESTFul API actions:
-`Retrieves the list of all State objects: GET /api/v1/states`
 
-`Retrieves a State object: GET /api/v1/states/<state_id>`
+* Retrieves the list of all State objects: `GET /api/v1/states`
 
-`Deletes a State object:: DELETE /api/v1/states/<state_id>`
+* Retrieves a State object: `GET /api/v1/states/<state_id>`
 
-`Creates a State: POST /api/v1/states`
+* Deletes a State object: `DELETE /api/v1/states/<state_id>`
 
-`Updates a State object: PUT /api/v1/states/<state_id>`
+* Creates a State: `POST /api/v1/states`
+
+* Updates a State object: `PUT /api/v1/states/<state_id>`
 
 [/cities.py](/api/v1/views/cities.py) - View for City objects that handles all default RESTFul API actions:
 
-`Retrieves the list of all City objects of a State: GET /api/v1/states/<state_id>/cities`
+* Retrieves the list of all City objects of a State: `GET /api/v1/states/<state_id>/cities`
 
-`Retrieves a City object. : GET /api/v1/cities/<city_id>`
+* Retrieves a City object: `GET /api/v1/cities/<city_id>`
 
-`Deletes a City object: DELETE /api/v1/cities/<city_id>`
+* Deletes a City object: `DELETE /api/v1/cities/<city_id>`
 
-`Creates a City: POST /api/v1/states/<state_id>/cities`
+* Creates a City: `POST /api/v1/states/<state_id>/cities`
 
-`Updates a City object: PUT /api/v1/cities/<city_id>`
+* Updates a City object: `PUT /api/v1/cities/<city_id>`
 
 [/amenities.py](/api/v1/views/amenities.py) - View for Amenity objects that handles all default RESTFul API actions:
 
-`Retrieves the list of all Amenity objects: GET /api/v1/amenities`
+* Retrieves the list of all Amenity objects: `GET /api/v1/amenities`
 
-`Retrieves a Amenity object: GET /api/v1/amenities/<amenity_id>`
+* Retrieves a Amenity object: `GET /api/v1/amenities/<amenity_id>`
 
-`Deletes a Amenity object:: DELETE /api/v1/amenities/<amenity_id>`
+* Deletes a Amenity object: `DELETE /api/v1/amenities/<amenity_id>`
 
-`Creates a Amenity: POST /api/v1/amenities`
+* Creates a Amenity: `POST /api/v1/amenities`
 
-`Updates a Amenity object: PUT /api/v1/amenities/<amenity_id>`
+* Updates a Amenity object: `PUT /api/v1/amenities/<amenity_id>`
 
 [/users.py](/api/v1/views/users.py) - View for Users objects that handles all default RESTFul API actions:
 
-`Retrieves the list of all User objects: GET /api/v1/users`
+* Retrieves the list of all User objects: `GET /api/v1/users`
 
-`Retrieves a User object: GET /api/v1/users/<user_id>`
+* Retrieves a User object: `GET /api/v1/users/<user_id>`
 
-`Deletes a User object:: DELETE /api/v1/users/<user_id>`
+* Deletes a User object: `DELETE /api/v1/users/<user_id>`
 
-`Creates a User: POST /api/v1/users`
+* Creates a User: `POST /api/v1/users`
 
-`Updates a User object: PUT /api/v1/users/<user_id>`
+* Updates a User object: `PUT /api/v1/users/<user_id>`
 
 [/places.py](/api/v1/views/places.py) - View for Place objects that handles all default RESTFul API actions:
 
-`Retrieves the list of all Place objects of a City: GET /api/v1/cities/<city_id>/places`
+* Retrieves the list of all Place objects of a City: `GET /api/v1/cities/<city_id>/places`
 
-`Retrieves a Place object. : GET /api/v1/places/<place_id>`
+* Retrieves a Place object: `GET /api/v1/places/<place_id>`
 
-`Deletes a Place object: DELETE /api/v1/places/<place_id>`
+* Deletes a Place object: `DELETE /api/v1/places/<place_id>`
 
-`Creates a Place: POST /api/v1/cities/<city_id>/places`
+* Creates a Place: `POST /api/v1/cities/<city_id>/places`
 
-`Updates a Place object: PUT /api/v1/places/<place_id>`
+* Updates a Place object: `PUT /api/v1/places/<place_id>`
 
 [/places_reviews.py](/api/v1/views/places_reviews.py) - View for Review objects that handles all default RESTFul API actions:
 
-`Retrieves the list of all Review objects of a Place: GET /api/v1/places/<place_id>/reviews`
+* Retrieves the list of all Review objects of a Place: `GET /api/v1/places/<place_id>/reviews`
 
-`Retrieves a Review object. : GET /api/v1/reviews/<review_id>`
+* Retrieves a Review object: `GET /api/v1/reviews/<review_id>`
 
-`Deletes a Review object: DELETE /api/v1/reviews/<review_id>`
+* Deletes a Review object: `DELETE /api/v1/reviews/<review_id>`
 
-`Creates a Review: POST /api/v1/places/<place_id>/reviews`
+* Creates a Review: `POST /api/v1/places/<place_id>/reviews`
 
-`Updates a Review object: PUT /api/v1/reviews/<review_id>`
+* Updates a Review object: `PUT /api/v1/reviews/<review_id>`
 
 ## Examples of use
 ```
