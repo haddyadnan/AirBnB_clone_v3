@@ -126,10 +126,11 @@ TestBaseModel class:
 * `def test_user_module_docstring(self)` - Test for the user.py module docstring
 * `def test_user_class_docstring(self)` - Test for the User class docstring
 
-#### `/api/v1/views` directory contains all RESTful api contained in this project:
-[/index.py](/api/v1/views/index.py) - Endpoint that retrieves the number of each objects by type
+#### `/api/v1/views` directory contains all RESTful api endpoint contained in this project:
 
-[/states.py](/api/v1/views/states.py) - View for State objects that handles all default RESTFul API actions:
+[/api/v1/views/index.py](/api/v1/views/index.py) - Endpoint that retrieves the number of each objects by type: `GET /api/v1/stats`
+
+[/api/v1/views/states.py](/api/v1/views/states.py) - View for State objects that handles all default RESTFul API actions:
 
 * Retrieves the list of all State objects: `GET /api/v1/states`
 
@@ -141,7 +142,7 @@ TestBaseModel class:
 
 * Updates a State object: `PUT /api/v1/states/<state_id>`
 
-[/cities.py](/api/v1/views/cities.py) - View for City objects that handles all default RESTFul API actions:
+[/api/v1/views/cities.py](/api/v1/views/cities.py) - View for City objects that handles all default RESTFul API actions:
 
 * Retrieves the list of all City objects of a State: `GET /api/v1/states/<state_id>/cities`
 
@@ -153,7 +154,7 @@ TestBaseModel class:
 
 * Updates a City object: `PUT /api/v1/cities/<city_id>`
 
-[/amenities.py](/api/v1/views/amenities.py) - View for Amenity objects that handles all default RESTFul API actions:
+[/api/v1/views/amenities.py](/api/v1/views/amenities.py) - View for Amenity objects that handles all default RESTFul API actions:
 
 * Retrieves the list of all Amenity objects: `GET /api/v1/amenities`
 
@@ -165,7 +166,7 @@ TestBaseModel class:
 
 * Updates a Amenity object: `PUT /api/v1/amenities/<amenity_id>`
 
-[/users.py](/api/v1/views/users.py) - View for Users objects that handles all default RESTFul API actions:
+[/api/v1/views/users.py](/api/v1/views/users.py) - View for Users objects that handles all default RESTFul API actions:
 
 * Retrieves the list of all User objects: `GET /api/v1/users`
 
@@ -177,7 +178,7 @@ TestBaseModel class:
 
 * Updates a User object: `PUT /api/v1/users/<user_id>`
 
-[/places.py](/api/v1/views/places.py) - View for Place objects that handles all default RESTFul API actions:
+[/api/v1/views/places.py](/api/v1/views/places.py) - View for Place objects that handles all default RESTFul API actions:
 
 * Retrieves the list of all Place objects of a City: `GET /api/v1/cities/<city_id>/places`
 
@@ -189,7 +190,7 @@ TestBaseModel class:
 
 * Updates a Place object: `PUT /api/v1/places/<place_id>`
 
-[/places_reviews.py](/api/v1/views/places_reviews.py) - View for Review objects that handles all default RESTFul API actions:
+[/api/v1/views/places_reviews.py](/api/v1/views/places_reviews.py) - View for Review objects that handles all default RESTFul API actions:
 
 * Retrieves the list of all Review objects of a Place: `GET /api/v1/places/<place_id>/reviews`
 
