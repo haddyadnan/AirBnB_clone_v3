@@ -126,6 +126,79 @@ TestBaseModel class:
 * `def test_user_module_docstring(self)` - Test for the user.py module docstring
 * `def test_user_class_docstring(self)` - Test for the User class docstring
 
+#### `/api/v1/views` directory contains all RESTful api contained in this project:
+[/index.py](/api/v1/views/index.py) - Endpoint that retrieves the number of each objects by type
+
+[/states.py](/api/v1/views/states.py) - View for State objects that handles all default RESTFul API actions:
+`Retrieves the list of all State objects: GET /api/v1/states`
+
+`Retrieves a State object: GET /api/v1/states/<state_id>`
+
+`Deletes a State object:: DELETE /api/v1/states/<state_id>`
+
+`Creates a State: POST /api/v1/states`
+
+`Updates a State object: PUT /api/v1/states/<state_id>`
+
+[/cities.py](/api/v1/views/cities.py) - View for City objects that handles all default RESTFul API actions:
+
+`Retrieves the list of all City objects of a State: GET /api/v1/states/<state_id>/cities`
+
+`Retrieves a City object. : GET /api/v1/cities/<city_id>`
+
+`Deletes a City object: DELETE /api/v1/cities/<city_id>`
+
+`Creates a City: POST /api/v1/states/<state_id>/cities`
+
+`Updates a City object: PUT /api/v1/cities/<city_id>`
+
+[/amenities.py](/api/v1/views/amenities.py) - View for Amenity objects that handles all default RESTFul API actions:
+
+`Retrieves the list of all Amenity objects: GET /api/v1/amenities`
+
+`Retrieves a Amenity object: GET /api/v1/amenities/<amenity_id>`
+
+`Deletes a Amenity object:: DELETE /api/v1/amenities/<amenity_id>`
+
+`Creates a Amenity: POST /api/v1/amenities`
+
+`Updates a Amenity object: PUT /api/v1/amenities/<amenity_id>`
+
+[/users.py](/api/v1/views/users.py) - View for Users objects that handles all default RESTFul API actions:
+
+`Retrieves the list of all User objects: GET /api/v1/users`
+
+`Retrieves a User object: GET /api/v1/users/<user_id>`
+
+`Deletes a User object:: DELETE /api/v1/users/<user_id>`
+
+`Creates a User: POST /api/v1/users`
+
+`Updates a User object: PUT /api/v1/users/<user_id>`
+
+[/places.py](/api/v1/views/places.py) - View for Place objects that handles all default RESTFul API actions:
+
+`Retrieves the list of all Place objects of a City: GET /api/v1/cities/<city_id>/places`
+
+`Retrieves a Place object. : GET /api/v1/places/<place_id>`
+
+`Deletes a Place object: DELETE /api/v1/places/<place_id>`
+
+`Creates a Place: POST /api/v1/cities/<city_id>/places`
+
+`Updates a Place object: PUT /api/v1/places/<place_id>`
+
+[/places_reviews.py](/api/v1/views/places_reviews.py) - View for Review objects that handles all default RESTFul API actions:
+
+`Retrieves the list of all Review objects of a Place: GET /api/v1/places/<place_id>/reviews`
+
+`Retrieves a Review object. : GET /api/v1/reviews/<review_id>`
+
+`Deletes a Review object: DELETE /api/v1/reviews/<review_id>`
+
+`Creates a Review: POST /api/v1/places/<place_id>/reviews`
+
+`Updates a Review object: PUT /api/v1/reviews/<review_id>`
 
 ## Examples of use
 ```
@@ -150,6 +223,42 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) quit
 ```
 
+## API Examples with curl
+Retrieve the number of each objects by type
+
+```
+ubuntu@ubuntu:~/AirBnB_v3$ curl -X GET http://0.0.0.0:5000/api/v1/stats
+```
+
+Retrieves the list of all State objects: GET /api/v1/states
+
+```
+ubuntu@ubuntu:~/AirBnB_v3$ curl -X GET http://0.0.0.0:5000/api/v1/states/
+```
+Retrieves a State Object
+
+```
+ubuntu@ubuntu:~/AirBnB_v3$ curl -X GET http://0.0.0.0:5000/api/v1/states/8f165686-c98d-46d9-87d9-d6059ade2d99
+```
+
+Creates a State: POST /api/v1/states
+
+```
+ubuntu@ubuntu:~/AirBnB_v3$ curl -X POST http://0.0.0.0:5000/api/v1/states/ -H "Content-Type: application/json" -d '{"name": "California"}'
+```
+
+Updates a State object: PUT /api/v1/states/<state_id>
+
+```
+ubuntu@ubuntu:~/AirBnB_v3$ curl -X PUT http://0.0.0.0:5000/api/v1/states/feadaa73-9e4b-4514-905b-8253f36b46f6 -H "Content-Type: application/json" -d '{"name": "California is so cool"}'
+```
+
+Deletes a State object:: DELETE /api/v1/states/<state_id>
+
+```
+curl -X DELETE http://0.0.0.0:5000/api/v1/states/feadaa73-9e4b-4514-905b-8253f36b46f6
+```
+
 ## Bugs
 No known bugs at this time.
 
@@ -157,5 +266,6 @@ No known bugs at this time.
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
 Adnan Adetunji - [Github](https://github.com/haddyadnan/)
+
 ## License
 Public Domain. No copy write protection.
